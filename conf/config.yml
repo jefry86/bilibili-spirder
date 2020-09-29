@@ -1,0 +1,14 @@
+path:
+  logs: ./temp/logs
+  video: ./temp/video
+  csv: ./temp/csv
+http:
+  timeout: 10
+  debug: false
+rate: 25
+db:
+  host: 127.0.0.1
+  port: 3306
+  username: root
+  password: root
+  name: demo
