@@ -11,10 +11,11 @@ import (
 var Config Cfg
 
 type Cfg struct {
-	Path Path
-	Http Http
 	Rate int
-	Db   DB
+	Path
+	Http
+	Db
+	Search
 }
 
 type Path struct {
@@ -28,12 +29,15 @@ type Http struct {
 	Debug   bool `json:"debug"`
 }
 
-type DB struct {
+type Db struct {
 	Host     string `json:"host"`
 	Port     int    `json:"port"`
 	Name     string `json:"name"`
 	Username string `json:"username"`
 	Password string `json:"password"`
+}
+type Search struct {
+	Keyword string `json:"keyword"`
 }
 
 func LoadCfg() {

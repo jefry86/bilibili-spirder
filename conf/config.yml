@@ -6,6 +6,8 @@ http:
   timeout: 10
   debug: false
 rate: 25
+search:
+  keyword: 柯南
 db:
   host: 127.0.0.1
   port: 3306

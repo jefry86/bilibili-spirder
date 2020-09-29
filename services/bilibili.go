@@ -8,6 +8,7 @@ import (
 	"bilibili-spirder/global"
 	"bilibili-spirder/model/bilibilii"
 	"bilibili-spirder/tools"
+	"bilibili-spirder/utils"
 )
 
 func SpiderVideo() {
@@ -15,7 +16,8 @@ func SpiderVideo() {
 		ra: tools.NewRate(10),
 		ch: make(chan *[]tools.SearchData, 1),
 	}
-	go b.getList()
+	keyword := utils.Config.Search.Keyword
+	go b.getList(keyword)
 	go b.getVideo()
 	go b.execVideo()
 }
@@ -25,8 +27,7 @@ type biliBiliSpider struct {
 	ch chan *[]tools.SearchData
 }
 
-func (b *biliBiliSpider) getList() {
-	keyword := "FPV穿越机"
+func (b *biliBiliSpider) getList(keyword string) {
 	pageNo := 1
 	pageSize := 20
 	num, err := b.search(keyword, pageNo, pageSize)
